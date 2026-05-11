@@ -25,7 +25,7 @@ type ClaudeData = {
         total_input_tokens: int
         total_output_tokens: int
         context_window_size: int
-        used_percentage: int
+        used_percentage: int option
         remaining_percentage: int
     |}
     rate_limits: {|
