@@ -3,7 +3,7 @@
 // https://code.claude.com/docs/en/statusline#available-data
 
 type RateLimit = {
-    used_percentage: int
+    used_percentage: float
     resets_at: int
 }
 
@@ -26,7 +26,7 @@ type ClaudeData = {
         total_output_tokens: int
         context_window_size: int
         used_percentage: int option
-        remaining_percentage: int
+        remaining_percentage: int option
     |}
     rate_limits: {|
         five_hour: RateLimit

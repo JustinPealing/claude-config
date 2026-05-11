@@ -23,17 +23,15 @@ let getGitBranch() =
         info.RedirectStandardError <- true
         let p = Process.Start(info)
         if p.WaitForExit(100) then
-            Some (p.StandardOutput.ReadToEnd().Trim())
-        else None
+            let stdout = p.StandardOutput.ReadToEnd().Trim()
+            if stdout = "" then "<none>" else stdout
+        else
+            "<timeout>"
     with
-    | ex ->
-        AnsiConsole.WriteException ex
-        None
+    | ex -> "<error>"
 
 try
     let data = JsonSerializer.Deserialize<ClaudeData> json
-    
-    AnsiConsole.MarkupInterpolated $"[Gold1]{LEFT}[/]"
     
     let usedPercentage =
         match data.context_window.used_percentage with
@@ -42,9 +40,14 @@ try
     
     let branch = getGitBranch()
     
-    AnsiConsole.MarkupInterpolated $"[Black on Gold1] ctx: {usedPercentage}%% [/]"
-    AnsiConsole.MarkupInterpolated $"[Gold1 on CornflowerBlue]{SEPARATOR}[/]"
-    AnsiConsole.MarkupInterpolated $"[Black on CornflowerBlue] \ue725 {if branch.IsSome then branch.Value else null} [/]"
-    AnsiConsole.MarkupInterpolated $"[CornflowerBlue]{RIGHT}[/]"
+    let segments = [
+        $"[Gold1]{LEFT}[/]";
+        $"[Black on Gold1] ctx: {usedPercentage}%% [/]";
+        $"[Gold1 on CornflowerBlue]{SEPARATOR}[/]";
+        $"[Black on CornflowerBlue] \ue725 {branch} [/]";
+        $"[CornflowerBlue]{RIGHT}[/]"
+    ]
+    
+    AnsiConsole.Markup (segments |> String.concat "")
 with
-| ex -> AnsiConsole.WriteException ex
+| ex -> AnsiConsole.WriteException(ex, ExceptionFormats.NoStackTrace) 
