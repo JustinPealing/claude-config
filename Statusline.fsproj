@@ -14,6 +14,7 @@
         <Compile Include="Program.fs"/>
         <Content Include="example.json" />
         <Content Include="README.md" />
+        <Content Include=".gitignore" />
     </ItemGroup>
 
     <ItemGroup>
