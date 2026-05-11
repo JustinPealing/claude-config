@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <SelfContained>true</SelfContained>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PublishSingleFile>true</PublishSingleFile>
+        <PublishReadyToRun>true</PublishReadyToRun>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="ClaudeData.fs" />
+        <Compile Include="Program.fs"/>
+        <Content Include="example.json" />
+        <Content Include="README.md" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Spectre.Console" Version="0.55.2" />
+    </ItemGroup>
+
+</Project>

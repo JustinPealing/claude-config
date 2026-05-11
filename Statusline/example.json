@@ -1,0 +1,58 @@
+{
+  "session_id": "972b4093-c6b1-44e8-a516-1f3966d99408",
+  "transcript_path": "C:\\Users\\jpealing\\.claude\\projects\\D---git-justinjitsu\\972b4093-c6b1-44e8-a516-1f3966d99408.jsonl",
+  "cwd": "D:\\_git\\justinjitsu",
+  "effort": {
+    "level": "medium"
+  },
+  "session_name": "Un-skip and fix GitInitTests.fs tests",
+  "model": {
+    "id": "claude-sonnet-4-6",
+    "display_name": "Sonnet 4.6"
+  },
+  "workspace": {
+    "current_dir": "D:\\_git\\justinjitsu",
+    "project_dir": "D:\\_git\\justinjitsu",
+    "added_dirs": []
+  },
+  "version": "2.1.138",
+  "output_style": {
+    "name": "default"
+  },
+  "cost": {
+    "total_cost_usd": 32.4499544,
+    "total_duration_ms": 11065259,
+    "total_api_duration_ms": 7415176,
+    "total_lines_added": 1621,
+    "total_lines_removed": 105
+  },
+  "context_window": {
+    "total_input_tokens": 161688,
+    "total_output_tokens": 117,
+    "context_window_size": 200000,
+    "current_usage": {
+      "input_tokens": 1,
+      "output_tokens": 117,
+      "cache_creation_input_tokens": 2914,
+      "cache_read_input_tokens": 158773
+    },
+    "used_percentage": 81,
+    "remaining_percentage": 19
+  },
+  "exceeds_200k_tokens": false,
+  "fast_mode": false,
+  "thinking": {
+    "enabled": true
+  },
+  "rate_limits": {
+    "five_hour": {
+      "used_percentage": 0,
+      "resets_at": 1778537400
+    },
+    "seven_day": {
+      "used_percentage": 36,
+      "resets_at": 1778810400
+    }
+  }
+}
+
