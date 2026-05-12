@@ -8,10 +8,6 @@ open Statusline.ClaudeData
 let logPath = Path.Combine(Path.GetDirectoryName Environment.ProcessPath, "statusline.log")
 let log (str : string) = File.WriteAllText(logPath, str)
 
-let SEPARATOR = "\ue0b8"
-let LEFT = "\ue0b6"
-let RIGHT = "\ue0b4"
-
 // Spectre.Console detection doesn't work with Claude Code
 AnsiConsole.Profile.Capabilities.Ansi <- true
 let json = Console.In.ReadToEnd()
@@ -50,15 +46,16 @@ let folder (data : ClaudeData) =
     $"📁 {data.workspace.current_dir}"
 
 try
-    let data = JsonSerializer.Deserialize<ClaudeData> json 
+    let data = JsonSerializer.Deserialize<ClaudeData> json
+    let SEPARATOR = "\ue0b8"
     let segments : FormattableString list = [
-        $"[CornflowerBlue]{LEFT}[/]";
+        $"[CornflowerBlue]\ue0b6[/]";
         $"[Black on CornflowerBlue] {folder data} [/][CornflowerBlue on Gold1]{SEPARATOR}[/]"
         $"[Black on Gold1] {getGitBranch()} [/][Gold1 on CornflowerBlue]{SEPARATOR}[/]";
         $"[Black on CornflowerBlue] {contextUsed data} [/][CornflowerBlue on LightSalmon1]{SEPARATOR}[/]"
         $"[Black on LightSalmon1] {rateLimit data.rate_limits.five_hour} \ue0bf {rateLimit data.rate_limits.seven_day} [/][LightSalmon1 on Lime]{SEPARATOR}[/]"
         $"[Black on Lime] {model data} [/]";
-        $"[Lime]{RIGHT}[/]"
+        $"[Lime]\ue0b4[/]"
     ]
     segments |> List.map AnsiConsole.MarkupInterpolated |> ignore
 with
