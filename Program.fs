@@ -52,7 +52,7 @@ let folder (data : ClaudeData) =
 try
     let json = Console.In.ReadToEnd()
     let data = JsonSerializer.Deserialize<ClaudeData> json
-    let SEPARATOR = "\ue0b8"
+    let SEPARATOR = "\ue0c0"
     let segments : FormattableString list = [
         $"[MediumPurple1]\ue0b6[/]";
         $"[Black on MediumPurple1] {folder data} [/][MediumPurple1 on DeepSkyBlue1]{SEPARATOR}[/]"
