@@ -8,6 +8,7 @@ type RateLimit = {
 }
 
 type ClaudeData = {
+    session_id: string
     cwd: string
     effort: {|
         level: string
