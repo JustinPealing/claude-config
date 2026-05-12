@@ -43,15 +43,21 @@ let rateLimit (limit: RateLimit) =
         | _ -> $"{remaining.Minutes}m"
     $"{remainingStr}: {100.0 - limit.used_percentage}%%"
 
+let model (data : ClaudeData) =
+    $"{data.model.display_name} ({data.effort.level})"
+
+let folder (data : ClaudeData) =
+    $"{data.workspace.current_dir}"
+
 try
     let data = JsonSerializer.Deserialize<ClaudeData> json 
     let segments : FormattableString list = [
         $"[Gold1]{LEFT}[/]";
-        $"[Black on Gold1] {data.model.display_name} [/][Gold1 on Plum2]{SEPARATOR}[/]"
-        $"[Black on Plum2] {contextUsed data} [/][Plum2 on CornflowerBlue]{SEPARATOR}[/]";
-        $"[Black on CornflowerBlue] {getGitBranch()} [/][CornflowerBlue on Lime]{SEPARATOR}[/]"
-        $"[Black on Lime] {rateLimit data.rate_limits.five_hour} \ue0bf[/]"
-        $"[Black on Lime] {rateLimit data.rate_limits.seven_day} [/]";
+        $"[Black on Gold1] {folder data} [/][Gold1 on Plum2]{SEPARATOR}[/]"
+        $"[Black on Plum2] {getGitBranch()} [/][Plum2 on CornflowerBlue]{SEPARATOR}[/]";
+        $"[Black on CornflowerBlue] {contextUsed data} [/][CornflowerBlue on LightSalmon1]{SEPARATOR}[/]"
+        $"[Black on LightSalmon1] {rateLimit data.rate_limits.five_hour} \ue0bf {rateLimit data.rate_limits.seven_day} [/][LightSalmon1 on Lime]{SEPARATOR}[/]"
+        $"[Black on Lime] {model data} [/]";
         $"[Lime]{RIGHT}[/]"
     ]
     segments |> List.map AnsiConsole.MarkupInterpolated |> ignore
