@@ -16,6 +16,7 @@
     <list default="true" id="0d81a3c7-4c1f-4c02-857c-11a9651b4729" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.claude-config.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.claude-config.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Project.Statusline.executor": "Run",
     "JujutsuToolWindow.CollapsedPaths.bf7bc4bf": "",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
@@ -75,12 +77,12 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="Statusline" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/net10.0/win-x64/Statusline.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin/Debug/net10.0/win-x64" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="D:\_git\claude-config\example.json" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
@@ -90,7 +92,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net10.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -106,7 +108,7 @@
       <workItem from="1778525561341" duration="39000" />
       <workItem from="1778526190540" duration="1544000" />
       <workItem from="1778569713582" duration="427000" />
-      <workItem from="1778570183749" duration="1910000" />
+      <workItem from="1778570183749" duration="2635000" />
     </task>
     <task id="LOCAL-00001" summary="Bunch of improvements">
       <option name="closed" value="true" />
@@ -116,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778571702080</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add folder">
+      <option name="closed" value="true" />
+      <created>1778572140776</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1778572140776</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +140,8 @@
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Bunch of improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bunch of improvements" />
+    <MESSAGE value="Add folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
