@@ -41,7 +41,7 @@ let rateLimit (limit: RateLimit) =
         | remaining when remaining.Days > 0 -> $"{remaining.Days}d"
         | remaining when remaining.Hours > 0 -> $"{remaining.Hours}h"
         | _ -> $"{remaining.Minutes}m"
-    $"{remainingStr}: {100.0 - limit.used_percentage}%%"
+    $"{remainingStr}: {100.0 - limit.used_percentage:N0}%%"
 
 let model (data : ClaudeData) =
     $"{data.model.display_name} ({data.effort.level})"
@@ -58,8 +58,8 @@ try
         $"[Black on MediumPurple1] {folder data} [/][MediumPurple1 on DeepSkyBlue1]{SEPARATOR}[/]"
         $"[Black on DeepSkyBlue1] {getGitBranch data} [/][DeepSkyBlue1 on MediumSpringGreen]{SEPARATOR}[/]";
         $"[Black on MediumSpringGreen] {contextUsed data} [/][MediumSpringGreen on Salmon1]{SEPARATOR}[/]"
-        $"[Black on Salmon1] {rateLimit data.rate_limits.five_hour} \ue0bf {rateLimit data.rate_limits.seven_day} [/][Salmon1 on Khaki1]{SEPARATOR}[/]"
-        $"[Black on Khaki1] {model data} [/]";
+        $"[Black on Salmon1] {rateLimit data.rate_limits.five_hour} \ue0c1 {rateLimit data.rate_limits.seven_day} [/][Salmon1 on Khaki1]{SEPARATOR}[/]"
+        $"[Black on Khaki1] 🤖 {model data} [/]";
         $"[Khaki1]\ue0b4[/]"
     ]
     segments |> List.map AnsiConsole.MarkupInterpolated |> ignore
