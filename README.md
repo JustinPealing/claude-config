@@ -11,5 +11,4 @@ Setup
 
 TODO:
 - Context window cached token percentage
-- Better colours
 - Cache git info

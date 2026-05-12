@@ -49,14 +49,14 @@ try
     let data = JsonSerializer.Deserialize<ClaudeData> json
     let SEPARATOR = "\ue0b8"
     let segments : FormattableString list = [
-        $"[CornflowerBlue]\ue0b6[/]";
-        $"[Black on CornflowerBlue] {folder data} [/][CornflowerBlue on Gold1]{SEPARATOR}[/]"
-        $"[Black on Gold1] {getGitBranch()} [/][Gold1 on CornflowerBlue]{SEPARATOR}[/]";
-        $"[Black on CornflowerBlue] {contextUsed data} [/][CornflowerBlue on LightSalmon1]{SEPARATOR}[/]"
-        $"[Black on LightSalmon1] {rateLimit data.rate_limits.five_hour} \ue0bf {rateLimit data.rate_limits.seven_day} [/][LightSalmon1 on Lime]{SEPARATOR}[/]"
-        $"[Black on Lime] {model data} [/]";
-        $"[Lime]\ue0b4[/]"
+        $"[MediumPurple1]\ue0b6[/]";
+        $"[Black on MediumPurple1] {folder data} [/][MediumPurple1 on DeepSkyBlue1]{SEPARATOR}[/]"
+        $"[Black on DeepSkyBlue1] {getGitBranch()} [/][DeepSkyBlue1 on MediumSpringGreen]{SEPARATOR}[/]";
+        $"[Black on MediumSpringGreen] {contextUsed data} [/][MediumSpringGreen on Salmon1]{SEPARATOR}[/]"
+        $"[Black on Salmon1] {rateLimit data.rate_limits.five_hour} \ue0bf {rateLimit data.rate_limits.seven_day} [/][Salmon1 on Khaki1]{SEPARATOR}[/]"
+        $"[Black on Khaki1] {model data} [/]";
+        $"[Khaki1]\ue0b4[/]"
     ]
     segments |> List.map AnsiConsole.MarkupInterpolated |> ignore
 with
-| ex -> AnsiConsole.WriteException(ex, ExceptionFormats.NoStackTrace) 
+| ex -> AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything) 
