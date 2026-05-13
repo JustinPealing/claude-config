@@ -32,5 +32,5 @@ type ClaudeData = {
     rate_limits: {|
         five_hour: RateLimit
         seven_day: RateLimit
-    |}
+    |} option
 }

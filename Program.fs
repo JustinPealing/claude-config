@@ -6,7 +6,7 @@ open Spectre.Console
 open Statusline.ClaudeData
 
 let logPath = Path.Combine(Path.GetDirectoryName Environment.ProcessPath, "statusline.log")
-let log (str : string) = File.WriteAllText(logPath, str)
+let log (str : string) = File.AppendAllText(logPath, str)
 
 // Must be set before AnsiConsole is initialised, otherwise Spectre captures Console.Out with the default (OEM) encoding
 Console.OutputEncoding <- System.Text.Encoding.UTF8
@@ -49,19 +49,23 @@ let model (data : ClaudeData) =
 let folder (data : ClaudeData) =
     $"📁 {data.workspace.current_dir}"
 
+let json = Console.In.ReadToEnd()
 try
-    let json = Console.In.ReadToEnd()
     let data = JsonSerializer.Deserialize<ClaudeData> json
     let SEPARATOR = "\ue0c0"
     let segments : FormattableString list = [
-        $"[MediumPurple1]\ue0b6[/]";
+        $"[MediumPurple1]\ue0b6[/]"
         $"[Black on MediumPurple1] {folder data} [/][MediumPurple1 on DeepSkyBlue1]{SEPARATOR}[/]"
-        $"[Black on DeepSkyBlue1] {getGitBranch data} [/][DeepSkyBlue1 on MediumSpringGreen]{SEPARATOR}[/]";
+        $"[Black on DeepSkyBlue1] {getGitBranch data} [/][DeepSkyBlue1 on MediumSpringGreen]{SEPARATOR}[/]"
         $"[Black on MediumSpringGreen] {contextUsed data} [/][MediumSpringGreen on Salmon1]{SEPARATOR}[/]"
-        $"[Black on Salmon1] {rateLimit data.rate_limits.five_hour} \ue0c1 {rateLimit data.rate_limits.seven_day} [/][Salmon1 on Khaki1]{SEPARATOR}[/]"
-        $"[Black on Khaki1] 🤖 {model data} [/]";
+        match data.rate_limits with
+        | Some rateLimits -> $"[Black on Salmon1] {rateLimit rateLimits.five_hour} \ue0c1 {rateLimit rateLimits.seven_day} [/][Salmon1 on Khaki1]{SEPARATOR}[/]"
+        | None -> $"[Black on Salmon1] ? [/][Salmon1 on Khaki1]{SEPARATOR}[/]"
+        $"[Black on Khaki1] 🤖 {model data} [/]"
         $"[Khaki1]\ue0b4[/]"
     ]
     segments |> List.map AnsiConsole.MarkupInterpolated |> ignore
 with
-| ex -> AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything) 
+| ex ->
+    log json
+    AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything) 
