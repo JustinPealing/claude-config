@@ -24,8 +24,14 @@ let getGitBranch (data : ClaudeData) =
     let cacheFilePath = Path.Combine(Path.GetTempPath(), $"statusline-git-cache-{data.session_id}")
     let fileInfo = FileInfo cacheFilePath
     if (not fileInfo.Exists) || fileInfo.LastWriteTimeUtc < DateTime.UtcNow.AddSeconds -2 then
-        File.WriteAllText(cacheFilePath, gitBranchSubprocess())
-    $"\ue725 {File.ReadAllText cacheFilePath}"
+        let branch = gitBranchSubprocess()
+        try
+            File.WriteAllText(cacheFilePath, branch)
+        with
+        | :? IOException -> ()
+        branch
+    else
+        $"\ue725 {File.ReadAllText cacheFilePath}"
 
 let contextUsed (data : ClaudeData) =
      let usedPercentage =
